@@ -1,0 +1,129 @@
+{
+  "auth": [
+    {
+      "name": "Permission",
+      "fields": {
+        "group": {
+          "type": "ManyToManyField",
+          "reference_field": "Group",
+          "null": true,
+          "editable": false,
+          "parent_link": false
+        },
+        "user_accounts": {
+          "type": "ManyToManyField",
+          "reference_field": "User",
+          "null": true,
+          "editable": false,
+          "parent_link": false
+        },
+        "id": {
+          "type": "AutoField",
+          "blank": true,
+          "null": false,
+          "primary_key": true,
+          "unique": true,
+          "verbose_name": "ID",
+          "help_text": "",
+          "editable": true,
+          "db_column": null,
+          "db_index": false
+        },
+        "name": {
+          "type": "CharField",
+          "blank": false,
+          "null": false,
+          "primary_key": false,
+          "unique": false,
+          "verbose_name": "name",
+          "help_text": "",
+          "editable": true,
+          "auto_created": false,
+          "db_column": null,
+          "db_index": false,
+          "max_length": 255,
+          "choices": null
+        },
+        "content_type": {
+          "type": "ForeignKey",
+          "reference_field": "ContentType",
+          "blank": false,
+          "null": false,
+          "primary_key": false,
+          "unique": false,
+          "verbose_name": "content type",
+          "help_text": "",
+          "editable": true,
+          "db_column": null,
+          "db_index": true
+        },
+        "codename": {
+          "type": "CharField",
+          "blank": false,
+          "null": false,
+          "primary_key": false,
+          "unique": false,
+          "verbose_name": "codename",
+          "help_text": "",
+          "editable": true,
+          "auto_created": false,
+          "db_column": null,
+          "db_index": false,
+          "max_length": 100,
+          "choices": null
+        }
+      }
+    },
+    {
+      "name": "Group",
+      "fields": {
+        "user_accounts": {
+          "type": "ManyToManyField",
+          "reference_field": "User",
+          "null": true,
+          "editable": false,
+          "parent_link": false
+        },
+        "id": {
+          "type": "AutoField",
+          "blank": true,
+          "null": false,
+          "primary_key": true,
+          "unique": true,
+          "verbose_name": "ID",
+          "help_text": "",
+          "editable": true,
+          "db_column": null,
+          "db_index": false
+        },
+        "name": {
+          "type": "CharField",
+          "blank": false,
+          "null": false,
+          "primary_key": false,
+          "unique": true,
+          "verbose_name": "name",
+          "help_text": "",
+          "editable": true,
+          "auto_created": false,
+          "db_column": null,
+          "db_index": false,
+          "max_length": 150,
+          "choices": null
+        },
+        "permissions": {
+          "type": "ManyToManyField",
+          "reference_field": "Permission",
+          "blank": true,
+          "null": false,
+          "primary_key": false,
+          "unique": false,
+          "verbose_name": "permissions",
+          "help_text": "",
+          "editable": true,
+          "db_index": false
+        }
+      }
+    }
+  ]
+}
